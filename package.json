@@ -1,0 +1,14 @@
+{
+  "name": "@sunnysideup/stretched-bg-image",
+  "version": "1.1.0",
+  "description": "NPM package - adds a stretched (filling) BG image to any html element where you add the 'stretched-bg-image' class",
+   "license": "MIT",
+   "repository": "sunnysideup/stretched-bg-image",
+   "main": "index.js",
+   "keywords": [
+     "tiny",
+     "npm",
+     "package",
+     "bamblehorse"
+   ]
+}
