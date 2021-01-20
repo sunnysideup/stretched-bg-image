@@ -1,1 +1,3 @@
-window.alert('to be completed.')
+module.exports = {
+  StretchedBgImages: require('./src/StretchedBgImages')
+}

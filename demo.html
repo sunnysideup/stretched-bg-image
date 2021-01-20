@@ -1,0 +1,92 @@
+<html>
+<head>
+  <title>example</title>
+  <style>
+    body {
+      background-color: green;
+    }
+    div {
+      background-color: grey;
+      margin: 30px auto;
+    }
+  </style>
+</head>
+<body>
+  <div style="width: 50vw; height: calc(10vw + 10vh);">panorama</div>
+  <div style="width: calc(10vw + 10vh); height: 50vw;">skyscraper</div>
+  <div style="width: calc(40vw + 13vh); height: 40vw;">landscape</div>
+  <div style="width: 40vw; height: calc(40vw + 13vh);">portrait</div>
+  <script src="src/js/StretchedBgImages.js"></script>
+  <link rel="stylesheet" href="src/css/StretchedBgImages.css">
+  <script>
+function apply (opt) {
+  opt = opt || {}
+
+  const defaultClassRanges = [
+    {
+      max: '8',
+      min: '2',
+      className: 'panorama'
+    },
+    {
+      max: '2',
+      min: '1',
+      className: 'landscape'
+    },
+    {
+      max: '1',
+      min: '0.5',
+      className: 'portrait'
+    },
+    {
+      max: '0.5',
+      min: '0.125',
+      className: 'skyscraper'
+    }
+  ]
+
+  const defaultQueryString = '.stretchedBgImages'
+
+  const classRanges = opt.classRanges || defaultClassRanges
+  const queryString = opt.queryString || defaultQueryString
+  // private data
+
+  // In response to resize, paint an ellipse inside a canvas
+  const ro = new window.ResizeObserver(
+    entries => {
+      for (const entry of entries) {
+        if (entry.target.handleResize) {
+          entry.target.handleResize(entry)
+        }
+      }
+    }
+  )
+  const entries = document.querySelectorAll(queryString)
+  for (let i = 0; i < entries.length; ++i) {
+    const entry = entries[i]
+    ro.observe(entry)
+    entry.handleResize = entry => {
+      const height = entry.target.clientHeight
+      const width = entry.target.clientWidth
+      const ratio = width / height
+
+      for (let j = 0; j < classRanges.length; ++j) {
+        const range = classRanges[j]
+        if (ratio >= range.min && ratio <= range.max) {
+          entry.target.classList.add(range.className)
+        } else {
+          entry.target.classList.remove(range.className)
+        }
+      }
+    }
+  }
+
+  return {
+    apply: this.apply
+  }
+}
+
+apply({ queryString: 'div' })
+  </script>
+</body>
+</html>
