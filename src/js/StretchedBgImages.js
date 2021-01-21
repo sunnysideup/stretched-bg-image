@@ -21,78 +21,74 @@
        * @type {Function}
        * @constructor
        */
-      const StretchedBgImages = function () {
-        // function apply () {
-        //   opt = opt || {}
-        //
-        //   // private data
-        //   var foo = opt.foo || 'default'
-        //
-        //   // API/data for end-user
-        //   return {
-        //     foo: foo,
-        //     ...
-        //   }
-        //
-        //   // private functions
-        //   function parse () {
-        //     ...
-        //   }
-        //   // do nothing
-        // }
-        // const defaultCssInjected = false
+      const StretchedBgImages = function () {}
+      StretchedBgImages.apply = function (opt) {
+        // defaults ...
+        const defaultClassRanges = [
+          {
+            max: '8',
+            min: '2',
+            className: 'panorama'
+          },
+          {
+            max: '2',
+            min: '1',
+            className: 'landscape'
+          },
+          {
+            max: '1',
+            min: '0.5',
+            className: 'portrait'
+          },
+          {
+            max: '0.5',
+            min: '0.125',
+            className: 'skyscraper'
+          }
+        ]
 
-        // /**
-        //      * Searches all css rules and setups the event listener to all elements with element query rules..
-        //      */
-        // this.init = function () {
-        //   apply()
-        // }
-        //
-        // this.update = function () {
-        //   this.init()
-        // }
-        //
-        // this.setRanges = function (classRanges) {
-        //   this.classRanges = classRanges
-        // }
+        const defaultQueryString = '.stretchedBgImages'
+
+        // set options
+        opt = opt || {}
+        const classRanges = opt.classRanges || defaultClassRanges
+        const queryString = opt.queryString || defaultQueryString
+
+        // observer method
+        const ro = new window.ResizeObserver(
+          entries => {
+            for (const entry of entries) {
+              if (entry.target.handleResize) {
+                entry.target.handleResize(entry)
+              }
+            }
+          }
+        )
+
+        // find elements...
+        const entries = document.querySelectorAll(queryString)
+
+        // loop elements
+        for (let i = 0; i < entries.length; ++i) {
+          const entry = entries[i]
+          ro.observe(entry)
+          // set resize Method
+          entry.handleResize = entry => {
+            const height = entry.target.clientHeight
+            const width = entry.target.clientWidth
+            const ratio = width / height
+
+            for (let j = 0; j < classRanges.length; ++j) {
+              const range = classRanges[j]
+              if (ratio >= range.min && ratio <= range.max) {
+                entry.target.classList.add(range.className)
+              } else {
+                entry.target.classList.remove(range.className)
+              }
+            }
+          }
+        }
       }
-
-      // StretchedBgImages.update = function () {
-      //   StretchedBgImages.instance.update()
-      // }
-      //
-      // StretchedBgImages.init = function () {
-      //   if (!StretchedBgImages.instance) {
-      //     StretchedBgImages.instance = new StretchedBgImages()
-      //   }
-      //
-      //   StretchedBgImages.instance.init()
-      // }
-
-      // const domLoaded = function (callback) {
-      //   /* Mozilla, Chrome, Opera */
-      //   if (document.addEventListener) {
-      //     document.addEventListener('DOMContentLoaded', callback, false)
-      //   } else if (/KHTML|WebKit|iCab/i.test(navigator.userAgent)) {
-      //     /* Safari, iCab, Konqueror */
-      //     var DOMLoadTimer = setInterval(function () {
-      //       if (/loaded|complete/i.test(document.readyState)) {
-      //         callback()
-      //         clearInterval(DOMLoadTimer)
-      //       }
-      //     }
-      //     , 10)
-      //   } else {
-      //     /* Other web browsers */
-      //     window.onload = callback
-      //   }
-      // }
-      //
-      // StretchedBgImages.listen = function () {
-      //   domLoaded(StretchedBgImages.init)
-      // }
-
       return StretchedBgImages
     }
   )

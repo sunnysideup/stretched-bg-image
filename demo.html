@@ -1,92 +1,164 @@
 <html>
 <head>
-  <title>example</title>
+  <title>example stretched bg images</title>
+  <link rel="stylesheet" href="src/css/StretchedBgImages.css">
   <style>
     body {
-      background-color: green;
+      background-color: #333;
     }
-    div {
-      background-color: grey;
+    * {
+      color: #fff;
+      font-family: sans-serif;
+    }
+    div.stretched-bg-images {
       margin: 30px auto;
+      /* centering content */
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+    div.stretched-bg-images em {
+      color: red;
+      display: flex;
+      align-items: center;
+      padding: 30px;
+      text-align: center;
+    }
+    pre, .code, q {
+      color: pink;
+      font-family: monospace;
+    }
+    h2, .text {
+      max-width: 600px;
+      margin: 50 auto;
+    }
+    h2 {
+      text-align: center;
+      font-family: serif;
+      border-bottom: 1px solid #fff;
     }
   </style>
+
 </head>
 <body>
-  <div style="width: 50vw; height: calc(10vw + 10vh);">panorama</div>
-  <div style="width: calc(10vw + 10vh); height: 50vw;">skyscraper</div>
-  <div style="width: calc(40vw + 13vh); height: 40vw;">landscape</div>
-  <div style="width: 40vw; height: calc(40vw + 13vh);">portrait</div>
+  <header class="text">
+    <h2>Purpose</h2>
+    <p>
+      Fill containers with stretched background images, and adjust background images depending on the containing element.
+      <strong>Note in the example that classes for divs change as viewport changes.</strong>
+    </p>
+  </header>
+  <h2>Example</h2>
+  <div style="width: 80vw; height: calc(10vw + 10vh);" class="stretched-bg-images"><em>panorama example</em></div>
+  <div style="width: calc(10vw + 10vh); height: 50vw;" class="stretched-bg-images"><em>skyscraper example</em></div>
+  <div style="width: calc(40vw + 13vh); height: 40vw;" class="stretched-bg-images"><em>landscape example</em></div>
+  <div style="width: 40vw; height: calc(40vw + 13vh);" class="stretched-bg-images"><em>portrait example</em></div>
+
+  <main class="text">
+
+    <h1>Installation // new-school</h1>
+    <p>
+      Add the following code to your js file:
+    </p>
+    <pre class="code">
+      const StretchedBgImages = require('stretched-bg-images')
+    </pre>
+    <p>
+      And, add the following code to your scss file:
+    </p>
+    <pre class="code">
+      import "StretchedBgImages";
+    </pre>
+    <h1>Installation // old-school</h1>
+    <p>
+      Add the following code to your html:
+    </p>
+    <pre class="code">
+      &lt;link rel="stylesheet" href="stretched-bg-images/src/css/StretchedBgImages.css" /&gt;
+      ...
+      &lt;script src="stretched-bg-images/src/js/StretchedBgImages.js"&gt;&lt;/script&gt;
+      &lt;script&gt;
+        // add script here!
+      &lt;/script&gt;
+    </pre>
+    <p>
+      To apply it to any element, use the <em>stretched-bg-images</em> class, like this:
+    </p>
+    <pre class="code">
+      &lt;div class="stretched-bg-images"&gt;
+        ...
+      &lt;/div&gt;
+    </pre>
+    </pre>
+    <h2>Running it</h2>
+    <p>
+      Add the following JS:
+    </p>
+    <pre>
+    StretchedBgImages.apply()
+    </pre>
+    <p>
+      Or with all options enabled:
+    </p>
+    <pre>
+    const options = {
+
+      queryString: '.stretched-bg-images, ul',
+
+      classRanges = [
+        {
+          max: '8',
+          min: '2',
+          className: 'panorama'
+        },
+        {
+          max: '2',
+          min: '1',
+          className: 'landscape'
+        },
+        {
+          max: '1',
+          min: '0.5',
+          className: 'portrait'
+        },
+        {
+          max: '0.5',
+          min: '0.125',
+          className: 'skyscraper'
+        }
+      ]
+    }
+    StretchedBgImages.apply(options)
+    </pre>
+    <h2>Options</h2>
+    <ul>
+      <li>Above you are seeing the default values, you can set them as you see fit.</li>
+      <li>
+        <q>max</q> and <q>min</q> refer the maximum and minimum <em>aspect ratio</em> defined as <strong>width divided by height</strong>
+        (i.e. 8 means that the width is four times greater than the height of the containing box.)</li>
+      <li>
+        queryString can be anything you like.
+      </li>
+    </ul>
+    </p>
+    <h2>Using SVGs</h2>
+    <p>
+      If you are using SVGs then you need to remove <span class="code">width</span> and <span class="code">height</span>
+      attributes from SVG and add <span class="code">preserveAspectRatio="none"</span>.
+      Like this:
+    </p>
+    <pre class="code">
+      &lt;svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 123 456"&gt;...&lt;/svg&gt;
+    </pre>
+
+  </main>
+
   <script src="src/js/StretchedBgImages.js"></script>
-  <link rel="stylesheet" href="src/css/StretchedBgImages.css">
   <script>
-function apply (opt) {
-  opt = opt || {}
-
-  const defaultClassRanges = [
-    {
-      max: '8',
-      min: '2',
-      className: 'panorama'
-    },
-    {
-      max: '2',
-      min: '1',
-      className: 'landscape'
-    },
-    {
-      max: '1',
-      min: '0.5',
-      className: 'portrait'
-    },
-    {
-      max: '0.5',
-      min: '0.125',
-      className: 'skyscraper'
-    }
-  ]
-
-  const defaultQueryString = '.stretchedBgImages'
-
-  const classRanges = opt.classRanges || defaultClassRanges
-  const queryString = opt.queryString || defaultQueryString
-  // private data
-
-  // In response to resize, paint an ellipse inside a canvas
-  const ro = new window.ResizeObserver(
-    entries => {
-      for (const entry of entries) {
-        if (entry.target.handleResize) {
-          entry.target.handleResize(entry)
-        }
-      }
-    }
-  )
-  const entries = document.querySelectorAll(queryString)
-  for (let i = 0; i < entries.length; ++i) {
-    const entry = entries[i]
-    ro.observe(entry)
-    entry.handleResize = entry => {
-      const height = entry.target.clientHeight
-      const width = entry.target.clientWidth
-      const ratio = width / height
-
-      for (let j = 0; j < classRanges.length; ++j) {
-        const range = classRanges[j]
-        if (ratio >= range.min && ratio <= range.max) {
-          entry.target.classList.add(range.className)
-        } else {
-          entry.target.classList.remove(range.className)
-        }
-      }
-    }
-  }
-
-  return {
-    apply: this.apply
-  }
-}
-
-apply({ queryString: 'div' })
+const options = { queryString: '.stretched-bg-images' }
+StretchedBgImages.apply(options)
   </script>
+
+
 </body>
 </html>
