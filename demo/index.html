@@ -69,6 +69,8 @@
 
       queryString: '.stretched-bg-images, ul',
 
+      errorClass: 'ratio-is-off-the-charts',
+
       classRanges = [
         {
           max: '8',
@@ -101,7 +103,10 @@
         <q>max</q> and <q>min</q> refer the maximum and minimum <em>aspect ratio</em> defined as <strong>width divided by height</strong>
         (i.e. 8 means that the width is four times greater than the height of the containing box.)</li>
       <li>
-        queryString can be anything you like.
+        <q>queryString</q> can be anything that works with: <q>document.querySelectorAll</q>.
+      </li>
+      <li>
+        <q>errorClass</q> is the class that is added when the ratio of the element is outside the described scopes in <q>classRanges</q>.
       </li>
     </ul>
     </p>
