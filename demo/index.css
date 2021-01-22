@@ -1,21 +1,3 @@
-.stretched-bg-images {
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-.stretched-bg-images.portrait {
-  background-image: url(../images/portrait.svg);
-}
-.stretched-bg-images.landscape {
-  background-image: url(../images/landscape.svg);
-}
-.stretched-bg-images.panorama {
-  background-image: url(../images/panorama.svg);
-}
-.stretched-bg-images.skyscraper {
-  background-image: url(../images/skyscraper.svg);
-}
-
-
 body {
   background-color: #333;
 }
