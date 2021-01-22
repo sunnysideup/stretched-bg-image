@@ -107,18 +107,11 @@ StretchedBgImages.apply(options)
 
 # Options
 
-<ul>
  - Above you are seeing the default values, you can set them as you see fit.
-
  - `max` and `min` refer the maximum and minimum <em>aspect ratio</em> defined as <strong>width divided by height</strong>
   (i.e. 8 means that the width is four times greater than the height of the containing box.)
-
  - `queryString` can be anything that works with: `document.querySelectorAll`.
-
-
  - `errorClass` is the class that is added when the ratio of the element is outside the described scopes in `classRanges`.
-
-
 
 
 # Using SVGs
