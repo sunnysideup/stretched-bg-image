@@ -18,7 +18,7 @@ git checkout gh-pages
 git rebase master
 
 # // commit the changes
-git push origin gh-pages
+git push origin gh-pages --force
 
 # // return to the master branch
 git checkout master
