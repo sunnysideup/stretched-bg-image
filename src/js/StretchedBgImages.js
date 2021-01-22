@@ -48,11 +48,13 @@
         ]
 
         const defaultQueryString = '.stretched-bg-images'
+        const defaultErrorClass = '.stretched-bg-images-error'
 
         // set options
         opt = opt || {}
         const classRanges = opt.classRanges || defaultClassRanges
         const queryString = opt.queryString || defaultQueryString
+        const errorClass = opt.queryString || defaultErrorClass
 
         // observer method
         const ro = new window.ResizeObserver(
@@ -77,14 +79,20 @@
             const height = entry.target.clientHeight
             const width = entry.target.clientWidth
             const ratio = width / height
-
+            let hit = false
             for (let j = 0; j < classRanges.length; ++j) {
               const range = classRanges[j]
               if (ratio >= range.min && ratio <= range.max) {
                 entry.target.classList.add(range.className)
+                hit = true
               } else {
                 entry.target.classList.remove(range.className)
               }
+            }
+            if (hit === false) {
+              entry.target.classList.add(errorClass)
+            } else {
+              entry.target.classList.remove(errorClass)
             }
           }
         }
