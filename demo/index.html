@@ -8,21 +8,29 @@
   <header class="text">
     <h2>Purpose</h2>
     <p>
-      Fill containers with stretched background images, and adjust background images depending on the containing element.
+      Fill containers with stretched background images, and adjust background images depending on the containing element ratio.
       <strong>Note in the example that classes for divs change as viewport changes.</strong>
     </p>
   </header>
-  <h2>Example</h2>
-  <div style="width: 80vw; height: calc(10vw + 10vh);" class="stretched-bg-images"><em>panorama example</em></div>
-  <div style="width: calc(10vw + 10vh); height: 50vw;" class="stretched-bg-images"><em>skyscraper example</em></div>
-  <div style="width: calc(40vw + 13vh); height: 40vw;" class="stretched-bg-images"><em>landscape example</em></div>
-  <div style="width: 40vw; height: calc(40vw + 13vh);" class="stretched-bg-images"><em>portrait example</em></div>
-  <div style="width: 400px; height: 40px;" class="stretched-bg-images"><em>error</em></div>
+  <section>
+    <h2>Example</h2>
+    <div style="width: 80vw; height: calc(10vw + 10vh);" class="stretched-bg-images"><em>panorama example</em></div>
+    <div style="width: calc(10vw + 10vh); height: 50vw;" class="stretched-bg-images"><em>skyscraper example</em></div>
+    <div style="width: calc(40vw + 13vh); height: 40vw;" class="stretched-bg-images"><em>landscape example</em></div>
+    <div style="width: 40vw; height: calc(40vw + 13vh);" class="stretched-bg-images"><em>portrait example</em></div>
+    <div style="width: 400px; height: 70px;" class="stretched-bg-images"><em>error 1 (ratio out of scope)</em></div>
+    <div style="width: 70px; height: 400px;" class="stretched-bg-images"><em>error 2 (ratio out of scope)</em></div>
+  </section>
 
   <main class="text">
 
-    <h1>Installation // new-school</h1>
+    <h2>Installation // new-school</h2>
     <p>
+      Install via npm:
+    </p>
+    <pre class="code">
+      npm i @sunnysideup/stretched-bg-image
+    </pre>    <p>
       Add the following code to your js file:
     </p>
     <pre class="code">
@@ -34,7 +42,9 @@
     <pre class="code">
       import "StretchedBgImages";
     </pre>
-    <h1>Installation // old-school</h1>
+
+
+    <h2>Installation // old-school</h2>
     <p>
       Add the following code to your html:
     </p>
@@ -46,6 +56,7 @@
         // add script here!
       &lt;/script&gt;
     </pre>
+    <h2>Applying it to your page ...</h2>
     <p>
       To apply it to any element, use the <em>stretched-bg-images</em> class, like this:
     </p>
@@ -54,16 +65,17 @@
         ...
       &lt;/div&gt;
     </pre>
-    </pre>
+
+
     <h2>Running it</h2>
     <p>
-      Add the following JS:
+      Add the following JS (old and new school):
     </p>
     <pre>
     StretchedBgImages.apply()
     </pre>
     <p>
-      Or with all options enabled:
+      Or with all options defined:
     </p>
     <pre>
     const options = {
@@ -97,6 +109,8 @@
     }
     StretchedBgImages.apply(options)
     </pre>
+
+
     <h2>Options</h2>
     <ul>
       <li>Above you are seeing the default values, you can set them as you see fit.</li>
