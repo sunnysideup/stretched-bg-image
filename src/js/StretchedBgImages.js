@@ -48,13 +48,13 @@
         ]
 
         const defaultQueryString = '.stretched-bg-images'
-        const defaultErrorClass = '.stretched-bg-images-error'
+        const defaultErrorClass = 'stretched-bg-images-error'
 
         // set options
         opt = opt || {}
         const classRanges = opt.classRanges || defaultClassRanges
         const queryString = opt.queryString || defaultQueryString
-        const errorClass = opt.queryString || defaultErrorClass
+        const errorClass = opt.errorClass || defaultErrorClass
 
         // observer method
         const ro = new window.ResizeObserver(

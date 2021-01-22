@@ -1,3 +1,1 @@
-module.exports = {
-  StretchedBgImages: require('./src/js/StretchedBgImages')
-}
+module.exports = require('./src/js/StretchedBgImages')
