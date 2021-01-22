@@ -47,7 +47,7 @@
           }
         ]
 
-        const defaultQueryString = '.stretchedBgImages'
+        const defaultQueryString = '.stretched-bg-images'
 
         // set options
         opt = opt || {}

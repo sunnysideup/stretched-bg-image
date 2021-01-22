@@ -1,5 +1,2 @@
-'use strict'
-
-const stretchedBgImages = require('@sunnysideup/stretched-bg-image')
-
-stretchedBgImages.apply()
+const options = { queryString: '.stretched-bg-images' }
+StretchedBgImages.apply(options)

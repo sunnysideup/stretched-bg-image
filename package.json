@@ -2,13 +2,14 @@
   "name": "@sunnysideup/stretched-bg-image",
   "version": "3.0.1",
   "description": "NPM package - adds a stretched (filling) BG image to any html element where you add the 'stretched-bg-image' class",
-   "license": "MIT",
-   "repository": "sunnysideup/stretched-bg-image",
-   "main": "index.js",
-   "keywords": [
-     "background",
-     "resize",
-     "responsive",
-     "background-images"
-   ]
+  "license": "MIT",
+  "repository": "sunnysideup/stretched-bg-image",
+  "main": "index.js",
+  "keywords": [
+    "background",
+    "resize",
+    "responsive",
+    "background-images"
+  ],
+  "scripts": {}
 }
