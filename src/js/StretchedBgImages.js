@@ -89,14 +89,15 @@
                 entry.target.classList.remove(range.className)
               }
             }
-            const errorClassForMe = errorClass + (ratio > 1 ? '-landscape' : '-portrait')
+            const errorClassFor1 = errorClass + (ratio > 1 ? '-landscape' : '-portrait')
+            const errorClassFor2 = errorClass + (ratio < 1 ? '-landscape' : '-portrait')
             if (hit === false) {
               entry.target.classList.add(errorClass)
-              entry.target.classList.add(errorClassForMe)
+              entry.target.classList.add(errorClassFor1)
             } else {
               entry.target.classList.remove(errorClass)
-              entry.target.classList.remove(errorClass + '-landscape')
-              entry.target.classList.remove(errorClass + '-portrait')
+              entry.target.classList.remove(errorClassFor1)
+              entry.target.classList.remove(errorClassFor2)
             }
           }
         }

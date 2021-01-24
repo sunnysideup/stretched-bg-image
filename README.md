@@ -125,3 +125,5 @@ Like this:
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 123 456">...</svg>
 ```
+
+You can use [https://yoksel.github.io/url-encoder/](https://yoksel.github.io/url-encoder/) to convert SVGs to backround images.  Making your code even faster.

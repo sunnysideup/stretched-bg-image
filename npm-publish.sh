@@ -1,3 +1,5 @@
+git branch
+
 # add files
 git add . -A
 
@@ -22,3 +24,5 @@ git push origin gh-pages --force
 
 # // return to the master branch
 git checkout master
+
+git branch
