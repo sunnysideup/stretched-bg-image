@@ -11,18 +11,32 @@
       <h2>Purpose</h2>
       <p>
         Fill containers with stretched background images, and adjust background images depending on the containing element ratio.
-        <strong>Note in the example that classes for divs change as viewport changes.</strong>
+      </p>
+      <p>
+        <strong>To see this code in action, change the viewport to a different size (e.g. mobile-size).</strong>
       </p>
     </header>
     <section>
       <h2>Example</h2>
-      <div style="width: 80vw; height: calc(10vw + 10vh);" class="stretched-bg-images"><em>panorama example</em></div>
-      <div style="width: calc(10vw + 10vh); height: 50vw;" class="stretched-bg-images"><em>skyscraper example</em></div>
-      <div style="width: calc(40vw + 13vh); height: 40vw;" class="stretched-bg-images"><em>landscape example</em></div>
-      <div style="width: 40vw; height: calc(40vw + 13vh);" class="stretched-bg-images"><em>portrait example</em></div>
-      <div style="width: 90vw; height: 10vw;" class="stretched-bg-images"><em>error 1 (ratio out of scope)</em></div>
-      <div style="width: 10vw; height: 90vw;" class="stretched-bg-images"><em>error 2 (ratio out of scope)</em></div>
+      <div style="width: 80vw; height: calc(10vw + 10vh);" class="stretched-bg-images"></div>
+      <div style="width: calc(10vw + 10vh); height: 50vw;" class="stretched-bg-images"></div>
+      <div style="width: calc(40vw + 13vh); height: 40vw;" class="stretched-bg-images"></div>
+      <div style="width: 40vw; height: calc(40vw + 13vh);" class="stretched-bg-images"></div>
+      <div style="width: 90vw; height: 10vw;" class="stretched-bg-images"></div>
+      <div style="width: 10vw; height: 90vw;" class="stretched-bg-images"></div>
     </section>
+    <aside class="text">
+      <h2>Credits</h2>
+      <p>
+        Photos from <a href="https://unsplash.com">unsplash</a>.
+      </p>
+      <ul>
+        <li>panorama: raphael andres</li>
+        <li>skyscraper: lukasz szmigiel</li>
+        <li>landscape: marek piwnicki</li>
+        <li>portrait: rui silvestre</li>
+      </ul>
+    </aside>
 
     <script src="../src/js/StretchedBgImages.js"></script>
     <script src="index.js"></script>

@@ -89,10 +89,14 @@
                 entry.target.classList.remove(range.className)
               }
             }
+            const errorClassForMe = errorClass + (ratio > 1 ? '-landscape' : '-portrait')
             if (hit === false) {
               entry.target.classList.add(errorClass)
+              entry.target.classList.add(errorClassForMe)
             } else {
               entry.target.classList.remove(errorClass)
+              entry.target.classList.remove(errorClass + '-landscape')
+              entry.target.classList.remove(errorClass + '-portrait')
             }
           }
         }
