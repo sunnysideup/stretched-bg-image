@@ -8,7 +8,7 @@ For examples images in demo, see demo.  Idea and design for squiggly images is b
 # Also See
 
 - [NPM Listing](https://www.npmjs.com/package/@sunnysideup/stretched-bg-image)
-- [Demo and installation instructions](https://sunnysideup.github.io/stretched-bg-image/demo/index.html)
+- [Demo](https://sunnysideup.github.io/stretched-bg-image/demo/index.html)
 
 # Installation // new-school
 
