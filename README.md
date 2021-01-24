@@ -3,7 +3,7 @@ NPM package - adds a stretched (filling) BG image to any html element where you 
 
 # credits
 
-For examples images in demo, see demo.  Idea and design for Squiggly iamges is by [Niels from Guts](https://guts.co.nz)
+For examples images in demo, see demo.  Idea and design for squiggly images is by [Niels from Guts](https://guts.co.nz)
 
 # Also See
 
