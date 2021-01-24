@@ -1,6 +1,10 @@
 # Stretched Background Images
 NPM package - adds a stretched (filling) BG image to any html element where you add the "stretched-bg-image" class.
 
+# credits
+
+For examples images in demo, see demo.  Idea and design for Squiggly iamges is by [Niels from Guts](https://guts.co.nz)
+
 # Also See
 
 - [NPM Listing](https://www.npmjs.com/package/@sunnysideup/stretched-bg-image)
@@ -115,7 +119,6 @@ StretchedBgImages.apply(options)
 
 
 # Using SVGs
-
 
 If you are using SVGs then you need to remove <span class="code">width</span> and <span class="code">height</span>
 attributes from SVG and add <span class="code">preserveAspectRatio="none"</span>.
