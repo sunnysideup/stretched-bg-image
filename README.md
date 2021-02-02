@@ -24,7 +24,7 @@ Add the following code to your js file:
 
 
 ```js
-const StretchedBgImages = require('stretched-bg-images')
+import StretchedBgImages from 'stretched-bg-images'
 ```
 
 And, add the following code to your scss file:
