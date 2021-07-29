@@ -80,21 +80,29 @@
             const width = entry.target.clientWidth
             const ratio = width / height
             let hit = false
+            let match = false;
             let closeEnough = false
             for (let j = 0; j < classRanges.length; ++j) {
+              match = false
+              closeEnough = false
               const range = classRanges[j]
               if (ratio >= range.min && ratio <= range.max) {
-                entry.target.classList.add(range.className)
-                hit = true
+                match = true
               } else if (ratio >= (range.min * treshold) && ratio <= (range.max * (1 / treshold))) {
                 closeEnough = true
               } else {
+                
+              }
+              if(match) {
+                hit = true
+                entry.target.classList.add(range.className)
+              } else if (closeEnough === false) {
                 entry.target.classList.remove(range.className)
               }
             }
             const errorClassFor1 = errorClass + (ratio > 1 ? '-landscape' : '-portrait')
             const errorClassFor2 = errorClass + (ratio < 1 ? '-landscape' : '-portrait')
-            if (hit === true || closeEnough === true) {
+            if (hit === true) {
               entry.target.classList.remove(errorClass)
               entry.target.classList.remove(errorClassFor1)
               entry.target.classList.remove(errorClassFor2)
