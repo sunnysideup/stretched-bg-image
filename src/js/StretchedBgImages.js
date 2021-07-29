@@ -46,7 +46,7 @@
             className: 'skyscraper'
           }
         ]
-
+        const treshold = 0.9
         const defaultQueryString = '.stretched-bg-images'
         const defaultErrorClass = 'stretched-bg-images-error'
 
@@ -80,24 +80,27 @@
             const width = entry.target.clientWidth
             const ratio = width / height
             let hit = false
+            let closeEnough = false
             for (let j = 0; j < classRanges.length; ++j) {
               const range = classRanges[j]
               if (ratio >= range.min && ratio <= range.max) {
                 entry.target.classList.add(range.className)
                 hit = true
+              } else if (ratio >= (range.min * treshold) && ratio <= (range.max * (1 / treshold))) {
+                closeEnough = true
               } else {
                 entry.target.classList.remove(range.className)
               }
             }
             const errorClassFor1 = errorClass + (ratio > 1 ? '-landscape' : '-portrait')
             const errorClassFor2 = errorClass + (ratio < 1 ? '-landscape' : '-portrait')
-            if (hit === false) {
-              entry.target.classList.add(errorClass)
-              entry.target.classList.add(errorClassFor1)
-            } else {
+            if (hit === true || closeEnough === true) {
               entry.target.classList.remove(errorClass)
               entry.target.classList.remove(errorClassFor1)
               entry.target.classList.remove(errorClassFor2)
+            } else {
+              entry.target.classList.add(errorClass)
+              entry.target.classList.add(errorClassFor1)
             }
           }
         }
