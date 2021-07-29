@@ -90,9 +90,7 @@
                 match = true
               } else if (ratio >= (range.min * treshold) && ratio <= (range.max * (1 / treshold))) {
                 closeEnough = true
-              } else {
-                
-              }
+              } 
               if(match) {
                 hit = true
                 entry.target.classList.add(range.className)
