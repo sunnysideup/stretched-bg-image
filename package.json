@@ -11,5 +11,9 @@
     "background-images"
   ],
   "scripts": {},
+<<<<<<< HEAD
   "version": "5.3.7"
+=======
+  "version": "5.4.2"
+>>>>>>> 27cbe42ace20f6855709ea8a3c4195162bc06697
 }

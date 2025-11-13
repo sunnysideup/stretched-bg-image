@@ -46,7 +46,7 @@
             className: 'skyscraper'
           }
         ]
-
+        const treshold = 0.8
         const defaultQueryString = '.stretched-bg-images'
         const defaultErrorClass = 'stretched-bg-images-error'
 
@@ -76,30 +76,41 @@
           ro.observe(entry)
           // set resize Method
           entry.handleResize = entry => {
-            const height = entry.target.clientHeight
-            const width = entry.target.clientWidth
-            const ratio = width / height
-            let hit = false
-            for (let j = 0; j < classRanges.length; ++j) {
-              const range = classRanges[j]
-              if (ratio >= range.min && ratio <= range.max) {
-                entry.target.classList.add(range.className)
-                hit = true
-              } else {
-                entry.target.classList.remove(range.className)
+            const height = entry.target.clientHeight;
+            const width = entry.target.clientWidth;
+            const ratio = width / height;
+            let hit = false;
+
+            const updateClasses = () => {
+              for (let j = 0; j < classRanges.length; ++j) {
+                const range = classRanges[j];
+                const match = ratio >= range.min && ratio <= range.max;
+                const closeEnough =
+                  ratio >= range.min * treshold && ratio <= range.max / treshold;
+
+                if (match) {
+                  hit = true;
+                  entry.target.classList.add(range.className);
+                } else if (!closeEnough) {
+                  entry.target.classList.remove(range.className);
+                }
               }
-            }
-            const errorClassFor1 = errorClass + (ratio > 1 ? '-landscape' : '-portrait')
-            const errorClassFor2 = errorClass + (ratio < 1 ? '-landscape' : '-portrait')
-            if (hit === false) {
-              entry.target.classList.add(errorClass)
-              entry.target.classList.add(errorClassFor1)
-            } else {
-              entry.target.classList.remove(errorClass)
-              entry.target.classList.remove(errorClassFor1)
-              entry.target.classList.remove(errorClassFor2)
-            }
-          }
+
+              const errorClassFor1 = errorClass + (ratio > 1 ? '-landscape' : '-portrait');
+              const errorClassFor2 = errorClass + (ratio < 1 ? '-landscape' : '-portrait');
+
+              if (hit) {
+                entry.target.classList.remove(errorClass);
+                entry.target.classList.remove(errorClassFor1);
+                entry.target.classList.remove(errorClassFor2);
+              } else {
+                entry.target.classList.add(errorClass);
+                entry.target.classList.add(errorClassFor1);
+              }
+            };
+            // Defer class updates to avoid layout thrashing
+            requestAnimationFrame(updateClasses);
+          };
         }
       }
       return StretchedBgImages
